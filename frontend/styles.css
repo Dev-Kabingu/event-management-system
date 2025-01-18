@@ -1,0 +1,173 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: "Poppins", serif;
+}
+p{
+    font-family: "Roboto", serif;
+}
+header{
+    background-color: #11dd11;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+}
+ul{
+    display: flex;
+    list-style: none;
+    gap: 24px;
+}
+li a{
+    text-decoration: none;
+    font-family: "Poppins", serif;
+    color: white;
+    cursor: pointer;
+}
+.fa-solid {
+    margin-right: 30px;
+    color: #2d2d2d;
+    font-size: 24px;
+    cursor: pointer;
+}
+.container {
+    display: flex;
+    margin: 20px;
+}
+.find-event{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+input{
+    border: none;
+    outline: none;
+    width: 100%;
+}
+.search-event .fa-solid{
+    margin: 10px;
+    font-size: 18px;
+}
+.search-event{
+    display: flex;
+    width: 30%;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0,0,0,.2);
+    background-color: white;
+}
+::placeholder{
+    text-transform: capitalize;
+    font-family: "Poppins", serif;
+}
+button{
+    padding: 16px 30px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    color: whitesmoke;
+    background-color: #11dd11;
+    font-family: "Poppins", serif;
+}
+select{
+    padding: 16px 20px;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,.2);
+}
+select, option{
+    text-transform: capitalize;
+    font-family: "Poppins", serif;
+}
+.aside {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-right: 1px solid #ddd;
+}
+
+.events-details {
+    flex: 1;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #2d2d2d;
+    color: white;
+    text-transform: capitalize;
+    font-family: "Poppins", serif;
+}
+td{
+    font-family: "Roboto", serif;
+    text-transform: capitalize;
+    color: #2d2d2d;
+}
+table .fa-solid {
+    margin-right: 30px;
+    color: #2d2d2d;
+    font-size: 18px;
+}
+/* dark mode */
+body.dark-mode { 
+    background-color: #2b2b2b;
+}
+ body.dark-mode table th, body.dark-mode table td { 
+    color: #f0f0f0;
+ } 
+body.dark-mode table th {
+     background-color: #333
+}
+body.dark-mode .fa-solid { 
+    color: #f0f0f0; 
+}
+/* adding event modal */
+.modal { 
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4); 
+} 
+.modal-content {
+     background-color: #fefefe; 
+     margin: 15% auto; 
+     padding: 20px; 
+     border: 1px solid #888; 
+     width: 80%;
+} 
+#close { 
+    color: #aaa; 
+    float: right; 
+    font-size: 28px; 
+    font-weight: bold; 
+} 
+#close:hover, #close:focus { 
+    color: black; 
+    text-decoration: none; 
+    cursor: pointer; 
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- font awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- icons -->
+     <!-- calender:<i class="fa-solid fa-calendar-days"></i>
+     upload:<i class="fa-solid fa-upload"></i>
+     home:<i class="fa-solid fa-house"></i>
+     search:<i class="fa-solid fa-magnifying-glass"></i>
+     edit:<i class="fa-solid fa-pen-to-square"></i>
+     delete:<i class="fa-solid fa-trash"></i>
+     user:<i class="fa-solid fa-user"></i>
+     password:<i class="fa-solid fa-lock"></i>
+     moon:<i class="fa-solid fa-moon"></i>
+     sun:<i class="fa-solid fa-sun"></i>
+     email:<i class="fa-solid fa-envelope"></i> -->
+     <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="dark-light-mode">
+            <i class="fa-solid fa-sun" id="light-mode" style="display: none;"></i>
+            <i class="fa-solid fa-moon"id="dark-mode"></i>
+        </div>
+        
+     </header>
+     <div class="filter-container">
+        <div class="find-event">
+            <div class="search-event">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search-bar" name="search-bar" placeholder="search event...">
+            </div>
+            <select name="category" id="category">
+                <option value="category">choose category</option>
+                <option value="wedding">wedding</option>
+                <option value="burial">burial</option>
+                <option value="birthday">birthday</option>
+            </select>
+            <button id="addEventBtn">AddEvent</button>
+            <!-- form to add the event -->
+            <div id="add-event-modal" class="modal"> 
+                <div class="modal-content"> 
+                    <span id="close">&times;</span> 
+                    <h2>Add Event</h2> 
+                    <form id="add-event-form"> 
+                        <label for="event-name">Event Name:</label> 
+                        <input type="text" id="event-name" required> 
+                        <label for="location">Location:</label> <input type="text" id="location" required> 
+                        <label for="time">Time:</label> 
+                        <input type="text" id="time" required> <label for="date">Date:</label> 
+                        <input type="date" id="date" required> <button type="submit" id="submit">Submit</button> 
+                    </form> 
+                </div>
+          
+           </div>
+     </div>
+
+     <div class="container">
+        <div class="aside">side bar</div>
+        <div class="events-details">
+            <table id="eventTable">
+                <tr>
+                    <th>id</th>
+                    <th>event name</th>
+                    <th>description</th>
+                    <th>location</th>
+                    <th>time</th>
+                    <th>date</th>
+                    <th> delete / edit</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>wedding</td>
+                    <td>Join us for a fun-filled birthday celebration in honor of [Name]! The party will feature exciting games, delicious food, and a fantastic cake. There will be music, dancing, and plenty of opportunities to make new friends. Don't forget to bring your favorite party game or a small gift for the birthday star. Let's make this a birthday to remember!</td>
+                    <td>nakuru</td>
+                    <td>02:30</td>
+                    <td>12/01/2025</td>
+                    <td><i class="fa-solid fa-trash"></i>  <i class="fa-solid fa-pen-to-square"></i></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>wedding</td>
+                    <td>nakuru</td>
+                    <td>02:30</td>
+                    <td>12/01/2025</td>
+                    <td><i class="fa-solid fa-trash"></i>  <i class="fa-solid fa-pen-to-square"></i></td>
+                </tr>
+                 <tr>
+                    <td>3</td>
+                    <td>wedding</td>
+                    <td>nakuru</td>
+                    <td>02:30</td>
+                    <td>12/01/2025</td>
+                    <td><i class="fa-solid fa-trash"></i>  <i class="fa-solid fa-pen-to-square"></i></td>
+                </tr>
+            </table>
+        </div>
+
+     </div>
+     <!-- javascript file -->
+      <script src="./script.js"></script>
+</body>
+</html>
