@@ -30,14 +30,15 @@ document.querySelector("#addEventForm").onsubmit = function(event) {
     var name = document.getElementById("name").value;
     var description = document.getElementById("description").value;
     var location = document.getElementById("location").value;
+    var ticket = document.getElementById("ticket").value;
     var time = document.getElementById("time").value;
     var date = document.getElementById("date").value;
     var image = document.getElementById("image").files[0];
-    if (tableData.some(data => data.name === name && data.description === description && data.location === location && data.time === time && data.date === date)) {
+    if (tableData.some(data => data.name === name && data.description === description && data.location === location &&  data.ticket === ticket && data.time === time && data.date === date)) {
       alert("Duplicate entry not allowed.");
       return;
     }
-    tableData.push({name: name, description: description, location: location, time: time, date: date, image: image});
+    tableData.push({name: name, description: description, location: location,ticket: ticket, time: time, date: date, image: image});
     saveTableData();
     var table = document.getElementById("eventTable");
     var newRow = table.insertRow();
@@ -48,13 +49,16 @@ document.querySelector("#addEventForm").onsubmit = function(event) {
     var cell5 = newRow.insertCell(4);
     var cell6 = newRow.insertCell(5);
     var cell7 = newRow.insertCell(6);
+    var cell8 = newRow.insertCell(7);
     cell1.innerHTML = name;
     cell2.innerHTML = description;
     cell3.innerHTML = location;
-    cell4.innerHTML = time;
-    cell5.innerHTML = date;
-    cell6.innerHTML = '<img src="" alt="Image" style="width:50px;height:50px;">';
-    cell7.innerHTML = '<i class="fa-solid fa-pen-to-square" class="editButton" onclick="editRow(this)"></i> <i class="fa-solid fa-trash" class="deleteButton" onclick="deleteRow(this)"></i>';
+    cell4.innerHTML = ticket;
+    cell5.innerHTML = time;
+    cell6.innerHTML = date;
+    cell7.innerHTML = `<img src="${data.image}" alt="Image" style="width:50px;height:50px;">`;
+    // cell8.innerHTML = '<i class="fa-solid fa-pen-to-square" class="editButton" onclick="editRow(this)"></i> <i class="fa-solid fa-trash" class="deleteButton" onclick="deleteRow(this)"></i>';
+    cell8.innerHTML = `<i class="fa-solid fa-pen-to-square editButton" onclick="editRow(${index})"></i> <i class="fa-solid fa-trash deleteButton" onclick="deleteRow(${index})"></i>`;
     document.getElementById("myModal").style.display = "none";
     document.getElementById("messageArea").innerHTML = "Success!";
 };
@@ -81,13 +85,15 @@ function loadTableData() {
         var cell5 = newRow.insertCell(4);
         var cell6 = newRow.insertCell(5);
         var cell7 = newRow.insertCell(6);
+        var cell8 = newRow.insertCell(7);
         cell1.innerHTML = data.name;
         cell2.innerHTML = data.description;
         cell3.innerHTML = data.location;
-        cell4.innerHTML = data.time;
-        cell5.innerHTML = data.date;
-        cell6.innerHTML = '<img src="" alt="Image" style="width:50px;height:50px;">';
-        cell7.innerHTML = '<i class="fa-solid fa-pen-to-square" class="editButton" onclick="editRow(this)"></i> <i class="fa-solid fa-trash" class="deleteButton" onclick="deleteRow(this)"></i>';
+        cell4.innerHTML = data.ticket;
+        cell5.innerHTML = data.time;
+        cell6.innerHTML = data.date;
+        cell7.innerHTML = `<img src="${data.image}" alt="Image" style="width:50px;height:50px;">`;
+        cell8.innerHTML = '<i class="fa-solid fa-pen-to-square" class="editButton" onclick="editRow(${index})"></i> <i class="fa-solid fa-trash" class="deleteButton" onclick="deleteRow(${index})"></i>';
     });
 }
 
