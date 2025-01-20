@@ -10,17 +10,20 @@
 }
 h1, h2, h3, h4, h5, h6{
     font-family: "Poppins", serif;
+    text-transform: capitalize;
+    color: #2d2d2d;
 }
 p{
     font-family: "Roboto", serif;
 }
 header{
-    background-color: #11dd11;
+    background-color: #FFBA08;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 10px;
+    padding: 16px 50px;
 }
+
 ul{
     display: flex;
     list-style: none;
@@ -29,8 +32,9 @@ ul{
 li a{
     text-decoration: none;
     font-family: "Poppins", serif;
-    color: white;
+    color: #2d2d2d;
     cursor: pointer;
+    font-weight: bold;
 }
 .fa-solid {
     margin-right: 30px;
@@ -38,10 +42,96 @@ li a{
     font-size: 24px;
     cursor: pointer;
 }
-.container {
-    display: flex;
-    margin: 20px;
+/* index page */
+.hero-container{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding-top: 5%;
+    margin-bottom: 50px;
 }
+.hero-container h1{
+    font-size: 48px;
+    line-height: 46px;
+}
+.hero-container h3{
+    color: #FFBA08;
+}
+
+.search-results{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 0;
+    margin-top: 40px;
+}
+.featured-events{
+    text-align: center;
+}
+.featured-events h1{
+    font-size: 24px;
+}
+h5{
+    color: #FFBA08;
+}
+.event-cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.card{
+    width: 300px;
+    height: auto;
+    border-radius: 6px;
+    padding: 8px;
+    background: rgba(255,255,255,.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,.3);
+    transition: transform 0.3s ease;
+}
+.card-image{
+    width: 100%;
+    height: 150px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+.card-image img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 6px 6px 0 0;
+}
+.card p{
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+.card button{
+    font-size: 12px;
+    padding: 8px 10px;
+    margin-top: 8px;
+    color: #333;
+}
+.card:hover {
+    transform: translateY(-10px);
+}
+/* footer */
+footer{
+    width: 100%;
+    background-color: #FFBA08;
+    padding: 18px 0;
+    text-align: center;
+}
+footer p{color: #333;}
+/* event page */
+/* .container {
+    margin: 20px;
+} */
 .find-event{
     width: 100%;
     display: flex;
@@ -71,13 +161,15 @@ input{
     font-family: "Poppins", serif;
 }
 button{
-    padding: 16px 30px;
+    padding: 12px 30px;
     border: none;
     border-radius: 4px;
     font-weight: bold;
-    color: whitesmoke;
-    background-color: #11dd11;
+    color: #2b2b2b;
+    background-color:#FFBA08 ;
     font-family: "Poppins", serif;
+    text-transform: capitalize;
+    font-size: 16px;
 }
 select{
     padding: 16px 20px;
@@ -89,12 +181,6 @@ select, option{
     text-transform: capitalize;
     font-family: "Poppins", serif;
 }
-.aside {
-    width: 200px;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-right: 1px solid #ddd;
-}
 
 .events-details {
     flex: 1;
@@ -105,7 +191,6 @@ table {
     width: 100%;
     border-collapse: collapse;
 }
-
 th, td {
     padding: 8px;
     text-align: left;
@@ -132,14 +217,11 @@ table .fa-solid {
 body.dark-mode { 
     background-color: #2b2b2b;
 }
- body.dark-mode table th, body.dark-mode table td { 
+ body.dark-mode table th, body.dark-mode table td, body.dark-mode .hero-container h1, body.dark-mode .featured-events h1, body.dark-mode .card h4, body.dark-mode .card p { 
     color: #f0f0f0;
  } 
-body.dark-mode table th {
+body.dark-mode table th{
      background-color: #333
-}
-body.dark-mode .fa-solid { 
-    color: #f0f0f0; 
 }
 /* adding event modal */
 .modal { 
@@ -160,6 +242,11 @@ body.dark-mode .fa-solid {
      border: 1px solid #888; 
      width: 80%;
 } 
+.modal-content input{
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 12px;
+}
 #close { 
     color: #aaa; 
     float: right; 

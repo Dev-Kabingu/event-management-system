@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Management System</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <!-- font awesome link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-    <!-- icons -->
-     <!-- calender:<i class="fa-solid fa-calendar-days"></i>
-     upload:<i class="fa-solid fa-upload"></i>
-     home:<i class="fa-solid fa-house"></i>
-     search:<i class="fa-solid fa-magnifying-glass"></i>
-     edit:<i class="fa-solid fa-pen-to-square"></i>
-     delete:<i class="fa-solid fa-trash"></i>
-     user:<i class="fa-solid fa-user"></i>
-     password:<i class="fa-solid fa-lock"></i>
-     moon:<i class="fa-solid fa-moon"></i>
-     sun:<i class="fa-solid fa-sun"></i>
-     email:<i class="fa-solid fa-envelope"></i> -->
-     <header>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- internal css -->
+     <style>
+        @keyframes fadeIn { 
+            from { opacity: 0; } 
+        }
+        @keyframes slideInFromBottom { 
+                from { transform: translateY(100%);
+                    opacity: 0; 
+                } 
+                to { transform: translateY(0);
+                     opacity: 1;
+                    }
+                 } 
+                     
+     </style>
+  </head>
+  <body>
+<!-- header -->
+    <header>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="events.html">Events</a></li>
-                <li><a href="register.html">Register</a></li>
                 <li><a href="admin.html">Admin</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="register.html">Register</a></li>
             </ul>
         </nav>
         <div class="dark-light-mode">
@@ -37,80 +46,119 @@
         </div>
         
      </header>
-     <div class="filter-container">
-        <div class="find-event">
-            <div class="search-event">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="search-bar" name="search-bar" placeholder="search event...">
-            </div>
-            <select name="category" id="category">
-                <option value="category">choose category</option>
-                <option value="wedding">wedding</option>
-                <option value="burial">burial</option>
-                <option value="birthday">birthday</option>
-            </select>
-            <button id="addEventBtn">AddEvent</button>
-            <!-- form to add the event -->
-            <div id="add-event-modal" class="modal"> 
-                <div class="modal-content"> 
-                    <span id="close">&times;</span> 
-                    <h2>Add Event</h2> 
-                    <form id="add-event-form"> 
-                        <label for="event-name">Event Name:</label> 
-                        <input type="text" id="event-name" required> 
-                        <label for="location">Location:</label> <input type="text" id="location" required> 
-                        <label for="time">Time:</label> 
-                        <input type="text" id="time" required> <label for="date">Date:</label> 
-                        <input type="date" id="date" required> <button type="submit" id="submit">Submit</button> 
-                    </form> 
+     <!-- end of header -->
+      <div class="hero-container">
+        <h3 style="animation: fadeIn 2s;">find your next experience</h3>
+        <h1 style="animation: slideInFromBottom 3s;">discover & promote <br> upcoming events</h1>
+        
+            <div class="search-results">
+                <div class="search-event" style="animation: slideInFromBottom 4s;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" name="search-bar" placeholder="search event by name or location ...">
                 </div>
-          
-           </div>
-     </div>
+                <!-- <div class="search-event" style="animation: slideInFromBottom 4s;">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="text" id="searchInput" name="search-bar" placeholder="search location ..">
+                </div> -->
+            </div>
+      </div>
 
-     <div class="container">
-        <div class="aside">side bar</div>
-        <div class="events-details">
-            <table id="eventTable">
-                <tr>
-                    <th>id</th>
-                    <th>event name</th>
-                    <th>description</th>
-                    <th>location</th>
-                    <th>time</th>
-                    <th>date</th>
-                    <th> delete / edit</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>wedding</td>
-                    <td>Join us for a fun-filled birthday celebration in honor of [Name]! The party will feature exciting games, delicious food, and a fantastic cake. There will be music, dancing, and plenty of opportunities to make new friends. Don't forget to bring your favorite party game or a small gift for the birthday star. Let's make this a birthday to remember!</td>
-                    <td>nakuru</td>
-                    <td>02:30</td>
-                    <td>12/01/2025</td>
-                    <td><i class="fa-solid fa-trash"></i>  <i class="fa-solid fa-pen-to-square"></i></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>wedding</td>
-                    <td>nakuru</td>
-                    <td>02:30</td>
-                    <td>12/01/2025</td>
-                    <td><i class="fa-solid fa-trash"></i>  <i class="fa-solid fa-pen-to-square"></i></td>
-                </tr>
-                 <tr>
-                    <td>3</td>
-                    <td>wedding</td>
-                    <td>nakuru</td>
-                    <td>02:30</td>
-                    <td>12/01/2025</td>
-                    <td><i class="fa-solid fa-trash"></i>  <i class="fa-solid fa-pen-to-square"></i></td>
-                </tr>
-            </table>
-        </div>
+      <!-- featured events -->
+       <div class="featured-events scrollReveal" id="featuredEvents">
+        <h5>upcoming events</h5>
+        <h1>featured events</h1>
 
-     </div>
-     <!-- javascript file -->
+<div id="eventCardsContainer"class="event-cards" style="animation: slideInFromBottom 3s;"></div>
+
+<script>
+    // Retrieve event data from sessionStorage
+    var tableData = JSON.parse(sessionStorage.getItem("tableData")) || [];
+
+    // Function to load events and display them as cards
+    function loadEventCards() {
+        var container = document.getElementById("eventCardsContainer");
+
+        // Clear any previous cards
+        container.innerHTML = '';
+
+        // Loop through each event and create a card
+        tableData.forEach(function(data) {
+            var card = document.createElement("div");
+            card.classList.add("event-card");
+
+            var cardContent = `  
+            <div class="card">
+                <div class="card-image">
+                    <img src="${data.image}" alt="image">
+                </div>
+                <div class="event-info">
+                    <h5 class="event-name">${data.name}</h5>
+                    <p class="event-description">Description: ${data.description}</p>
+                    <p class="event-location">Location: ${data.location}</p>
+                    <p class="event-time">Time: ${data.time}</p>
+                    <p class="event-date">Date: ${data.date}</p>
+                </div>
+                <button id="buyTicket">buy ticket</button>
+            </div>          
+            `;
+            card.innerHTML = cardContent;
+            container.appendChild(card);
+        });
+    }
+
+    // Function to filter events based on search input
+    document.getElementById("searchInput").addEventListener("keyup", function() {
+        var searchValue = this.value.toLowerCase();
+        var filteredData = tableData.filter(function(data) {
+            return data.name.toLowerCase().includes(searchValue) || data.location.toLowerCase().includes(searchValue);
+        });
+        displayCards(filteredData);
+    });
+
+    // Function to display filtered cards
+    function displayCards(filteredData) {
+        var container = document.getElementById("eventCardsContainer");
+        container.innerHTML = ''; // Clear existing cards
+        filteredData.forEach(function(data) {
+            var card = document.createElement("div");
+            card.classList.add("event-card");
+
+            var cardContent = `  
+            <div class="card">
+                <div class="card-image">
+                    <img src="${data.image}" alt="image">
+                </div>
+                <div class="event-info">
+                    <h5 class="event-name">${data.name}</h5>
+                    <p class="event-description">Description: ${data.description}</p>
+                    <p class="event-location">Location: ${data.location}</p>
+                    <p class="event-time">Time: ${data.time}</p>
+                    <p class="event-date">Date: ${data.date}</p>
+                </div>
+                <button id="buyTicket">buy ticket</button>
+            </div>          
+            `;
+            card.innerHTML = cardContent;
+            container.appendChild(card);
+        });
+    }
+
+    // Load event cards when the page loads
+    window.onload = function() {
+        loadEventCards();
+    };
+</script>
+
+    
+    
+<!-- footer -->
+ <footer>
+    <p>&copy 2025 | All Rights Reserved.</p>
+ </footer>
+ 
+
+
+     <!-- script file -->
       <script src="./script.js"></script>
-</body>
+  </body>
 </html>
