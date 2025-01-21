@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Management System</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- font awesome link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- internal css -->
+     <style>
+        @keyframes fadeIn { 
+            from { opacity: 0; } 
+        }
+        @keyframes slideInFromBottom { 
+                from { transform: translateY(100%);
+                    opacity: 0; 
+                } 
+                to { transform: translateY(0);
+                     opacity: 1;
+                    }
+                 } 
+                     
+     </style>
+  </head>
+  <body>
+<!-- header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+        <div class="dark-light-mode">
+            <i class="fa-solid fa-sun" id="light-mode" style="display: none;"></i>
+            <i class="fa-solid fa-moon"id="dark-mode"></i>
+        </div>
+        
+     </header>
+     <!-- end of header -->
+      <div class="hero-container">
+        <h3 style="animation: fadeIn 2s;">find your next experience</h3>
+        <h1 style="animation: slideInFromBottom 3s;">discover & promote <br> upcoming events</h1>
+        
+            <div class="search-results">
+                <div class="search-event" style="animation: slideInFromBottom 4s;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" name="search-bar" placeholder="search event by name or location ...">
+                </div>
+                <!-- <div class="search-event" style="animation: slideInFromBottom 4s;">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="text" id="searchInput" name="search-bar" placeholder="search location ..">
+                </div> -->
+            </div>
+      </div>
+
+      <!-- featured events -->
+       <div class="featured-events scrollReveal" id="featuredEvents">
+        <h5>upcoming events</h5>
+        <h1>featured events</h1>
+
+<div id="eventCardsContainer"class="event-cards" style="animation: slideInFromBottom 3s;"></div>
+
+<script>
+    // Retrieve event data from sessionStorage
+    var tableData = JSON.parse(sessionStorage.getItem("tableData")) || [];
+
+    // Function to load events and display them as cards
+    function loadEventCards() {
+        var container = document.getElementById("eventCardsContainer");
+
+        // Clear any previous cards
+        container.innerHTML = '';
+
+        // Loop through each event and create a card
+        tableData.forEach(function(data) {
+            var card = document.createElement("div");
+            card.classList.add("event-card");
+
+            var cardContent = `  
+            <div class="card">
+                <div class="card-image">
+                    <img src="${data.image}" alt="image">
+                </div>
+                <div class="event-info">
+                    <h5 class="event-name">${data.name}</h5>
+                    <p class="event-description">Description: ${data.description}</p>
+                    <p class="event-location">Location: ${data.location}</p>
+                    <p class="event-time">Time: ${data.time}</p>
+                    <p class="event-date">Date: ${data.date}</p>
+                </div>
+                <button id="buyTicket">buy ticket</button>
+            </div>          
+            `;
+            card.innerHTML = cardContent;
+            container.appendChild(card);
+        });
+    }
+
+    // Function to filter events based on search input
+    document.getElementById("searchInput").addEventListener("keyup", function() {
+        var searchValue = this.value.toLowerCase();
+        var filteredData = tableData.filter(function(data) {
+            return data.name.toLowerCase().includes(searchValue) || data.location.toLowerCase().includes(searchValue);
+        });
+        displayCards(filteredData);
+    });
+
+    // Function to display filtered cards
+    function displayCards(filteredData) {
+        var container = document.getElementById("eventCardsContainer");
+        container.innerHTML = ''; // Clear existing cards
+        filteredData.forEach(function(data) {
+            var card = document.createElement("div");
+            card.classList.add("event-card");
+
+            var cardContent = `  
+            <div class="card">
+                <div class="card-image">
+                    <img src="${data.image}" alt="image">
+                </div>
+                <div class="event-info">
+                    <h5 class="event-name">${data.name}</h5>
+                    <p class="event-description">Description: ${data.description}</p>
+                    <p class="event-location">Location: ${data.location}</p>
+                    <p class="event-time">Time: ${data.time}</p>
+                    <p class="event-date">Date: ${data.date}</p>
+                </div>
+                <button id="buyTicket">buy ticket</button>
+            </div>          
+            `;
+            card.innerHTML = cardContent;
+            container.appendChild(card);
+        });
+    }
+
+    // Load event cards when the page loads
+    window.onload = function() {
+        loadEventCards();
+    };
+</script>
+
+    
+    
+<!-- footer -->
+ <footer>
+    <p>&copy 2025 | All Rights Reserved.</p>
+ </footer>
+ 
+
+
+     <!-- script file -->
+      <script src="./script.js"></script>
+  </body>
+</html>
