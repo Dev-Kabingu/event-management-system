@@ -57,8 +57,7 @@ document.querySelector("#addEventForm").onsubmit = function(event) {
     cell5.innerHTML = time;
     cell6.innerHTML = date;
     cell7.innerHTML = `<img src="${data.image}" alt="Image" style="width:50px;height:50px;">`;
-    // cell8.innerHTML = '<i class="fa-solid fa-pen-to-square" class="editButton" onclick="editRow(this)"></i> <i class="fa-solid fa-trash" class="deleteButton" onclick="deleteRow(this)"></i>';
-    cell8.innerHTML = `<i class="fa-solid fa-pen-to-square editButton" onclick="editRow(${index})"></i> <i class="fa-solid fa-trash deleteButton" onclick="deleteRow(${index})"></i>`;
+    cell8.innerHTML = '<i class="fa-solid fa-pen-to-square" class="editButton" onclick="editRow(.this)"></i> <i class="fa-solid fa-trash" class="deleteButton" onclick="deleteRow(.this)"></i>';
     document.getElementById("myModal").style.display = "none";
     document.getElementById("messageArea").innerHTML = "Success!";
 };
@@ -66,6 +65,9 @@ document.querySelector("#addEventForm").onsubmit = function(event) {
 document.querySelector(".close").onclick = function() {
   document.getElementById("myModal").style.display = "none";
 };
+document.getElementById("submitEvent").onclick = function() {
+    document.getElementById("myModal").style.display = "none";
+}
 
 // Function to save table data to sessionStorage
 function saveTableData() {
@@ -93,7 +95,7 @@ function loadTableData() {
         cell5.innerHTML = data.time;
         cell6.innerHTML = data.date;
         cell7.innerHTML = `<img src="${data.image}" alt="Image" style="width:50px;height:50px;">`;
-        cell8.innerHTML = '<i class="fa-solid fa-pen-to-square" class="editButton" onclick="editRow(${index})"></i> <i class="fa-solid fa-trash" class="deleteButton" onclick="deleteRow(${index})"></i>';
+        cell8.innerHTML = '<i class="fa-solid fa-pen-to-square" class="editButton" onclick="editRow(.this)"></i> <i class="fa-solid fa-trash" class="deleteButton" onclick="deleteRow(.this)"></i>';
     });
 }
 
